@@ -1,8 +1,9 @@
 import pytest
 import builtins
 from unittest.mock import patch
-from problema_cliente import ingresardatos, modificardatos
+from problema_cliente import ingresardatos, modificardatos, eliminardatos
 
+# _____________________________________________________________________________________________________________________________________________________#
 #Testeo a la funcion ingresar datos#
 
 @patch('builtins.input', side_effect=[
@@ -19,6 +20,7 @@ def test_ingresardatos(mock_input):
     result = ingresardatos()
     assert result is None 
 
+# _____________________________________________________________________________________________________________________________________________________#
 #Testeo a la funcion modificar datos#
 
 
@@ -38,3 +40,16 @@ def test_ingresardatos(mock_input):
 def test_modificardatos(mock_input):
     result = modificardatos()
     assert result == "Modificacion exitosa"
+
+#_____________________________________________________________________________________________________________________________________________________#
+#Testeo para eliminar datos
+
+@patch('builtins.input', side_effect=[
+    "1",   # ID o RUN del cliente a eliminar
+    "SI"   # Confirmación de eliminación
+])
+def test_eliminardatos(mock_input):
+    result = eliminardatos()
+    assert result == "Eliminacion exitosa"
+
+# _____________________________________________________________________________________________________________________________________________________#
