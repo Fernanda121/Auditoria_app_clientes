@@ -187,6 +187,7 @@ def modificardatos():
         listanuevos.append(datos[7])
     
     clientes[mod]=listanuevos
+    return "Modificacion exitosa"
 
 
 def eliminardatos():
