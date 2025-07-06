@@ -224,46 +224,50 @@ def ingresoUsuarios():
     usuario = [codigo,username,clave,nombre,apellidos,correo]
     usuarios[username] = usuario
 
+def iniciar_aplicacion():
+    while True:
+        menuUsuarios()
+        opUsu = int(input("INGRESE OPCIÓN: "))
 
-while True:
-    menuUsuarios()
-    opUsu = int(input("INGRESE OPCIÓN: "))
-
-    if opUsu == 1:
-        user = input("Ingrese nombre de usuario: ")
-        clave = input("Ingrese password: ")
-        if usuarios.get(user):
-            usuario = usuarios.get(user)
-            if usuario[2] == clave:
-                print(f"Bienvenido {usuario[3]} {usuario[4]} - {usuario[2]} - id: {usuario[0]}.")
-                input("Presiona ENTRAR para ingresar al Menú Principal.")
-                while True:  # Bucle para el Menú Principal
-                    menuprincipal()
-                    op = int(input("INGRESE OPCIÓN: "))
-                    if op == 1:
-                        ingresardatos()
-                    elif op == 2:
-                        mostrar()
-                    elif op == 3:
-                        modificardatos()
-                    elif op == 4:
-                        eliminardatos()
-                    elif op == 5:
-                        opSalir = input("¿DESEA SALIR [SI/NO]: ")
-                        if opSalir.lower() == "si":
-                            break  # Salir del bucle del Menú Principal
-                    else:
-                        print("Opción Fuera de Rango")
-                break  # Salir del bucle del Menú de Usuarios
+        if opUsu == 1:
+            user = input("Ingrese nombre de usuario: ")
+            clave = input("Ingrese password: ")
+            if usuarios.get(user):
+                usuario = usuarios.get(user)
+                if usuario[2] == clave:
+                    print(f"Bienvenido {usuario[3]} {usuario[4]} - {usuario[2]} - id: {usuario[0]}.")
+                    input("Presiona ENTRAR para ingresar al Menú Principal.")
+                    while True:  # Bucle para el Menú Principal
+                        menuprincipal()
+                        op = int(input("INGRESE OPCIÓN: "))
+                        if op == 1:
+                            ingresardatos()
+                        elif op == 2:
+                            mostrar()
+                        elif op == 3:
+                            modificardatos()
+                        elif op == 4:
+                            eliminardatos()
+                        elif op == 5:
+                            opSalir = input("¿DESEA SALIR [SI/NO]: ")
+                            if opSalir.lower() == "si":
+                                break  # Salir del bucle del Menú Principal
+                        else:
+                            print("Opción Fuera de Rango")
+                    break  # Salir del bucle del Menú de Usuarios
+                else:
+                    input("Contraseña incorrecta. Presiona ENTER para volver al Menú de Usuarios.")
             else:
-                input("Contraseña incorrecta. Presiona ENTER para volver al Menú de Usuarios.")
+                input("Usuario no registrado. Presiona ENTER para volver al Menú de Usuarios.")
+        elif opUsu == 2:
+            ingresoUsuarios()
+        elif opUsu == 3:
+            opSalir = input("¿DESEA SALIR [SI/NO]: ")
+            if opSalir.lower() == "si":
+                break
         else:
-            input("Usuario no registrado. Presiona ENTER para volver al Menú de Usuarios.")
-    elif opUsu == 2:
-        ingresoUsuarios()
-    elif opUsu == 3:
-        opSalir = input("¿DESEA SALIR [SI/NO]: ")
-        if opSalir.lower() == "si":
-            break
-    else:
-        print("Opción Fuera de Rango")
+            print("Opción Fuera de Rango")
+
+
+if __name__ == "__main__":
+    iniciar_aplicacion()
