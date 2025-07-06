@@ -197,6 +197,7 @@ def eliminardatos():
     mostrartodo()
     elim = int(input("Ingrese valor de ID del Cliente que desea Eliminar : "))
     del clientes[elim]
+    return "Eliminacion exitosa"
 
 # --------------------------------------
 
